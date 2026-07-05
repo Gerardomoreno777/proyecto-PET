@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>El Uso y Reciclaje del PET en Veracruz</title>
+    </head>
+
+<body bgcolor="#E8F5E9" text="#1B5E20">
+    <nav>
+        <p align="center">
+            <a href="#introduccion"><b>Inicio</b></a> | 
+            <a href="#datos"><b>Estadísticas y Tablas</b></a> | 
+            <a href="#proceso"><b>Proceso de Reciclaje</b></a> | 
+            <a href="#iniciativas"><b>Iniciativas en Veracruz</b></a> | 
+            <a href="#enlaces"><b>Fuentes Externas</b></a>
+            </p>
+    </nav>
+    <hr size="3" color="#2E7D32">
+    <header>
+        <h1 align="center">El Impacto y Manejo del PET en el Estado de Veracruz</h1>
+        <p align="center"><i>Una mirada hacia la sustentabilidad y la innovación veracruzana</i></p>
+        </header>
+
+    <hr size="2" color="#A5D6A7">
+
+    <section id="introduccion">
+        <h2>1. Impacto Ambiental y Versatilidad del PET</h2>
+        <p>
+            El plástico <b>PET (Polietileno Tereftalato)</b> es uno de los materiales más utilizados en la industria veracruzana debido a su alta resistencia, ligereza y versatilidad industrial para envasar refrescos, aguas y alimentos. Sin embargo, su <u>persistencia en el medio ambiente</u> es alarmante, ya que puede tardar cientos de años en degradarse.
+        </p>
+        <p>
+            En un estado costero como Veracruz, la disposición inadecuada del PET alimenta de forma directa la <strong>contaminación oceánica</strong>, afectando gravemente a la fauna marina del Golfo de México y tapando los drenajes urbanos durante las temporadas de lluvias.
+        </p>
+        <p align="center">
+            <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=500" alt="Botellas de PET tiradas" width="400" border="1">
+            <br>
+            <small>Imagen 1: Botellas plásticas acumuladas, un desafío ambiental en nuestras costas.</small>
+        </p>
+        </section>
+
+    <section id="datos">
+        <h2>2. Reciclaje y Economía Circular: Panorama General</h2>
+        <p>El PET no tiene por qué ser un desperdicio; representa una gran alternativa frente a otros materiales si se gestiona bajo el modelo de la economía circular. A continuación, se presenta una comparativa de su uso:</p>
+        
+        <table border="2" cellpadding="8" cellspacing="0" align="center" bgcolor="#FFFFFF">
+            <tr bgcolor="#A5D6A7">
+                <th>Concepto / Material</th>
+                <th>Ventajas del PET</th>
+                <th>Desventajas Actuales</th>
+            </tr>
+            <tr>
+                <td><b>Impacto en Veracruz</b></td>
+                <td>Alta tasa de recolección local.</td>
+                <td>Mucha acumulación en playas y ríos.</td>
+            </tr>
+            <tr>
+                <td><b>Comparativa Industrial</b></td>
+                <td>Económico, ligero y 100% reciclable.</td>
+                <td>Proviene originalmente del petróleo.</td>
+            </tr>
+        </table>
+    </section>
+
+    <br>
+
+    <section id="proceso">
+        <h2>3. El Proceso de Reciclaje del PET</h2>
+        <p>Para transformar una botella usada en materia prima nueva, se sigue un riguroso proceso técnico:</p>
+        
+        <ol>
+            <li><strong>Acopio y Separación:</strong> Se recolectan las botellas en centros de reciclaje veracruzanos y se quitan tapas y etiquetas.</li>
+            <li><strong>Triturado:</strong> Las botellas se muelen hasta convertirse en pequeñas hojuelas plásticas.</li>
+            <li><strong>Lavado y Secado:</strong> Se eliminan impurezas, pegamentos y restos de líquido.</li>
+            <li><strong>Peletizado:</strong> El plástico limpio se funde para crear nuevos "pellets" listos para la fabricación.</li>
+        </ol>
+    </section>
+
+    <section id="iniciativas">
+        <h2>4. Innovación e Iniciativas en el Estado de Veracruz</h2>
+        <p>En el estado de Veracruz existen diversos frentes abordando esta situación:</p>
+        
+        <ul>
+            <li><b>Innovación Veracruzana:</b> Universidades locales investigan cómo transformar el PET reciclado en materiales de construcción accesibles.</li>
+            <li><b>Iniciativas Sociales:</b> Grupos de ciudadanos organizan limpiezas de playas masivas en la zona conurbada Veracruz-Boca del Río.</li>
+            <li><b>Proyectos Educativos:</b> Escuelas de bachillerato implementan contenedores exclusivos para fomentar la cultura del reciclaje desde jóvenes.</li>
+        </ul>
+    </section>
+
+    <hr size="2" color="#A5D6A7">
+
+    <footer id="enlaces">
+        <h3>Enlaces de Interés y Fuentes:</h3>
+        <p>Para conocer más sobre el reciclaje de PET en México y Veracruz, puedes visitar los siguientes sitios oficiales:</p>
+        <ul>
+            <li><a href="https://www.ecoce.mx" target="_blank">ECOCE - Asociación Ambiental de la Industria de Envases</a></li>
+            <li><a href="https://www.veracruz.gob.mx/medioambiente/" target="_blank">Secretaría de Medio Ambiente de Veracruz (SEDEMA)</a></li>
+            </ul>
+        <hr size="1">
+        <p align="center"><small>Proyecto Escolar de Bachillerato - 2026. Hecho con HTML5 Puro.</small></p>
+    </footer>
+
+</body>
+</html>
