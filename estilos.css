@@ -1,0 +1,186 @@
+/* Definición de variables CSS para la paleta de colores ampliada (Estilo Ecológico/PET) */
+:root {
+    --verde-principal: #004D40;  /* Verde botella oscuro */
+    --verde-secundario: #00796B; /* Verde medio */
+    --verde-esmeralda: #009688;  /* Color vivo de acento */
+    --verde-menta: #E0F2F1;      /* Fondo base suave */
+    --verde-pastel: #E8F5E9;     /* Fondo secundario sutil */
+    --azul-cristal: #E1F5FE;     /* Inspirado en el PET transparente */
+    --azul-marino: #1A237E;      /* Contraste para textos destacados */
+    --texto-principal: #263238;  /* Gris oscuro */
+    --blanco: #FFFFFF;
+}
+
+/* Animaciones CSS de entrada y fondo */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--verde-menta) 0%, #F5F5F5 50%, var(--azul-cristal) 100%);
+    background-attachment: fixed;
+    color: var(--texto-principal);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* PANTALLA DE ENTRADA (BIENVENIDA) */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(-45deg, var(--verde-principal), var(--verde-secundario), var(--verde-esmeralda), #00bfa5);
+    background-size: 400% 400%;
+    animation: fondoAnimado 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.welcome-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 90%;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.welcome-card h1 {
+    color: var(--verde-principal);
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.btn-entrar {
+    background: linear-gradient(135deg, var(--verde-secundario), var(--verde-esmeralda));
+    color: var(--blanco);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 150, 136, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.btn-entrar:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 150, 136, 0.6);
+}
+
+/* Oculta la pantalla de bienvenida al pulsar el botón */
+.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+/* CONTENIDO PRINCIPAL */
+#main-content {
+    display: none; /* JavaScript lo cambiará a block */
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-secundario) 100%);
+    color: var(--blanco);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+header h1 { margin: 0; font-size: 2.3rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+header p { margin: 0.7rem 0 0 0; color: #A7FFEB; font-size: 1.1rem; }
+
+nav {
+    background-color: var(--verde-principal);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0.6rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    margin: 0.2rem;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--blanco);
+    color: var(--verde-principal);
+    transform: scale(1.05);
+}
+
+main { max-width: 1000px; margin: 2.5rem auto; padding: 0 1rem; }
+
+section {
+    background-color: var(--blanco);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid var(--verde-esmeralda);
+    animation: fadeInUp 1s ease-out forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 47, 40, 0.15);
+}
+
+section h2 { color: var(--azul-marino); margin-top: 0; font-size: 1.6rem; border-bottom: 2px solid var(--verde-menta); padding-bottom: 0.6rem; }
+.img-container { text-align: center; margin: 1.5rem 0; }
+img { max-width: 100%; height: auto; border-radius: 8px; border: 4px solid var(--azul-cristal); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+ol li::marker { color: var(--verde-esmeralda); font-weight: bold; }
+ul { list-style-type: square; }
+li { margin-bottom: 0.6rem; }
+
+.table-responsive { overflow-x: auto; margin-top: 1.5rem; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; background-color: var(--blanco); }
+th, td { padding: 14px 18px; text-align: left; }
+th { background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-secundario) 100%); color: var(--blanco); }
+tr:nth-child(even) { background-color: var(--verde-pastel); }
+tr:hover { background-color: var(--azul-cristal); }
+
+.simulador-box {
+    background: linear-gradient(135deg, #F5F7FA 0%, var(--azul-cristal) 100%);
+    border-left: 6px solid var(--verde-esmeralda);
+    padding: 2rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+}
+
+input[type="number"] { padding: 0.6rem; width: 90px; border: 2px solid var(--verde-secundario); border-radius: 6px; font-size: 1rem; outline: none; }
+.simulador-box button { background: linear-gradient(135deg, var(--verde-secundario) 0%, var(--verde-esmeralda) 100%); color: var(--blanco); border: none; padding: 0.6rem 1.4rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
+.simulador-box button:hover { transform: translateY(-2px); }
+.resultado-js { margin-top: 1.5rem; font-weight: bold; color: var(--azul-marino); background-color: var(--blanco); padding: 1rem; border-radius: 6px; border: 1px dashed var(--verde-esmeralda); }
+
+footer { background: linear-gradient(135deg, var(--verde-principal) 0%, #111 100%); color: var(--blanco); text-align: center; padding: 2rem 1rem; margin-top: 4rem; font-size: 0.9rem; }
