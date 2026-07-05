@@ -1,336 +1,104 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>El Uso y Reciclaje del PET en Veracruz</title>
-    
-    <style>
-        /* Estilos Generales y Variables de Color */
-        :root {
-            --bg-principal: #f4f6f7;
-            --bg-seccion: #ffffff;
-            --texto-principal: #2c3e50;
-            --verde-ecologia: #2e7d32;
-            --azul-pet: #1565c0;
-            --borde: #e2e8f0;
-        }
+    </head>
 
-        /* Clase para el Modo Oscuro (se activará con JavaScript) */
-        .dark-mode {
-            --bg-principal: #1a252f;
-            --bg-seccion: #2c3e50;
-            --texto-principal: #ecf0f1;
-            --verde-ecologia: #4caf50;
-            --azul-pet: #3498db;
-            --borde: #34495e;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-principal);
-            color: var(--texto-principal);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Barra de Navegación */
-        nav {
-            background-color: #1565c0;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .nav-flex {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #a5d6a7;
-        }
-
-        /* Botón de Modo Oscuro */
-        #btn-theme {
-            background-color: #ffffff;
-            color: #1565c0;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        #btn-theme:hover {
-            background-color: #a5d6a7;
-            color: #2e7d32;
-        }
-
-        /* Encabezado */
-        header {
-            background-color: #2e7d32;
-            color: #ffffff;
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-
-        header h1 { margin: 0; font-size: 2.3rem; }
-        header p { margin: 10px 0 0 0; font-size: 1.1rem; color: #e8f5e9; }
-
-        /* Widget del Contador Dinámico (JS) */
-        .contador-box {
-            background-color: #e8f5e9;
-            border-left: 5px solid #2e7d32;
-            padding: 15px;
-            margin-bottom: 25px;
-            border-radius: 4px;
-            color: #1b5e20;
-            text-align: center;
-        }
-        .dark-mode .contador-box {
-            background-color: #1b5e20;
-            color: #e8f5e9;
-            border-left-color: #4caf50;
-        }
-        #contador-num {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #d32f2f;
-        }
-        .dark-mode #contador-num { color: #ff8a80; }
-
-        /* Secciones */
-        section {
-            background-color: var(--bg-seccion);
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: background-color 0.3s;
-        }
-
-        h2 {
-            color: var(--verde-ecologia);
-            border-bottom: 2px solid #a5d6a7;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-
-        h3 { color: var(--azul-pet); }
-
-        b, strong { color: var(--azul-pet); }
-
-        /* Alertas / Tarjetas de información extra */
-        .info-card {
-            background-color: #e3f2fd;
-            border: 1px solid #90caf9;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            color: #0d47a1;
-        }
-        .dark-mode .info-card {
-            background-color: #0d47a1;
-            border-color: #1565c0;
-            color: #e3f2fd;
-        }
-
-        /* Imágenes */
-        .img-container { text-align: center; margin: 20px 0; }
-        img { max-width: 100%; height: auto; border-radius: 8px; }
-        small { display: block; margin-top: 8px; color: #7f8c8d; font-style: italic; }
-
-        /* Tablas */
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--borde); }
-        th { background-color: var(--verde-ecologia); color: #ffffff; }
-        tr:hover { background-color: rgba(0,0,0,0.02); }
-
-        /* Listas */
-        ul, ol { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
-            color: #ffffff;
-            padding: 30px 20px;
-            border-radius: 8px 8px 0 0;
-            margin-top: 40px;
-        }
-        footer h3 { color: #a5d6a7; }
-        footer a { color: #3498db; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-    </style>
-</head>
-
-<body>
-
+<body bgcolor="#E8F5E9" text="#1B5E20">
     <nav>
-        <div class="nav-flex">
-            <a href="#introduccion">Inicio</a>
-            <a href="#datos">Estadísticas</a>
-            <a href="#proceso">El Proceso</a>
-            <a href="#iniciativas">Veracruz</a>
-            <a href="#enlaces">Fuentes</a>
-            <button id="btn-theme">Modo Oscuro</button>
-        </div>
+        <p align="center">
+            <a href="#introduccion"><b>Inicio</b></a> | 
+            <a href="#datos"><b>Estadísticas y Tablas</b></a> | 
+            <a href="#proceso"><b>Proceso de Reciclaje</b></a> | 
+            <a href="#iniciativas"><b>Iniciativas en Veracruz</b></a> | 
+            <a href="#enlaces"><b>Fuentes Externas</b></a>
+            </p>
     </nav>
-
-    <div class="container">
-
-        <header>
-            <h1>El Impacto y Manejo del PET en el Estado de Veracruz</h1>
-            <p>Una mirada hacia la sustentabilidad y la innovación veracruzana</p>
+    <hr size="3" color="#2E7D32">
+    <header>
+        <h1 align="center">El Impacto y Manejo del PET en el Estado de Veracruz</h1>
+        <p align="center"><i>Una mirada hacia la sustentabilidad y la innovación veracruzana</i></p>
         </header>
 
-        <div class="contador-box">
-            <p>⚠️ Desde que abriste esta página, se han desechado aproximadamente <span id="contador-num">0</span> botellas de PET en el estado de Veracruz.</p>
-        </div>
+    <hr size="2" color="#A5D6A7">
 
-        <section id="introduccion">
-            <h2>1. Impacto Ambiental y Versatilidad del PET</h2>
-            <p>
-                El plástico <strong>PET (Polietileno Tereftalato)</strong> es una joya de la <b>versatilidad industrial</b>: es irrompible, económico y ligero, ideal para las embotelladoras de bebidas a nivel global. No obstante, su mayor virtud es también su maldición. Su resistencia química provoca una tenaz <u>persistencia en el medio ambiente</u>, llegando a tardar hasta 500 años en fragmentarse.
-            </p>
-            
-            <div class="info-card">
-                <strong>Dato Crítico:</strong> Veracruz es uno de los estados con mayor consumo de bebidas embotelladas debido a sus altas temperaturas tropicales, lo que eleva exponencialmente el desecho diario de este polímero.
-            </div>
-
-            <p>
-                Al ser un estado costero, la falta de infraestructura de segregación empuja al PET hacia arroyos y ríos (como el Actopan o el Jamapa), desembocando en una severa <strong>contaminación oceánica</strong> en el Golfo de México. Esto ahoga los arrecifes de coral veracruzanos y fragmenta el plástico en microplásticos, los cuales ya son ingeridos por peces comerciales.
-            </p>
-            
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=500" alt="Botellas de PET tiradas">
-                <small>Imagen 1: Acumulación de plásticos en entornos fluviales y costeros de la región.</small>
-            </div>
+    <section id="introduccion">
+        <h2>1. Impacto Ambiental y Versatilidad del PET</h2>
+        <p>
+            El plástico <b>PET (Polietileno Tereftalato)</b> es uno de los materiales más utilizados en la industria veracruzana debido a su alta resistencia, ligereza y versatilidad industrial para envasar refrescos, aguas y alimentos. Sin embargo, su <u>persistencia en el medio ambiente</u> es alarmante, ya que puede tardar cientos de años en degradarse.
+        </p>
+        <p>
+            En un estado costero como Veracruz, la disposición inadecuada del PET alimenta de forma directa la <strong>contaminación oceánica</strong>, afectando gravemente a la fauna marina del Golfo de México y tapando los drenajes urbanos durante las temporadas de lluvias.
+        </p>
+        <p align="center">
+            <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=500" alt="Botellas de PET tiradas" width="400" border="1">
+            <br>
+            <small>Imagen 1: Botellas plásticas acumuladas, un desafío ambiental en nuestras costas.</small>
+        </p>
         </section>
 
-        <section id="datos">
-            <h2>2. Reciclaje y Economía Circular: Panorama General</h2>
-            <p>La transición hacia una <b>Economía Circular</b> propone dejar atrás el modelo de "extraer, usar y tirar". En Veracruz, reincorporar el PET a la cadena productiva disminuye la extracción de petróleo y ahorra hasta un <b>75% de energía</b> en comparación con la producción de plástico virgen.</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Concepto / Material</th>
-                        <th>PET Virgen (Derivado del Petróleo)</th>
-                        <th>PET Reciclado (rPET) en Veracruz</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Huella de Carbono</strong></td>
-                        <td>Muy alta por refinación química.</td>
-                        <td>Reducida en más del 60%.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Alternativa a otros materiales</strong></td>
-                        <td>Sustituye costosamente al vidrio y aluminio.</td>
-                        <td>Se convierte en fibras textiles, calzado y resinas.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Situación en el Estado</strong></td>
-                        <td>Satura rápidamente los rellenos sanitarios.</td>
-                        <td>Sostiene la economía de miles de recolectores locales.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="proceso">
-            <h2>3. El Proceso de Reciclaje del PET</h2>
-            <p>Mucha gente piensa que reciclar es sólo lavar una botella. Técnicamente, es una transformación industrial dividida en fases:</p>
-            
-            <ol>
-                <li><strong>Acopio y Separación:</strong> Centros de acopio recolectan el material. Se separan las botellas por color (las transparentes y azules tienen más valor industrial) y se retiran tapas (hechas de polipropileno).</li>
-                <li><strong>Triturado Mecánico:</strong> Grandes molinos reducen las botellas a hojuelas (flakes).</li>
-                <li><strong>Lavado Químico Profundo:</strong> Se eliminan pegamentos de etiquetas y contaminantes orgánicos.</li>
-                <li><strong>Peletizado y Extrusión:</strong> Las hojuelas se funden a más de <b>260°C</b> para formar "pellets" (pequeñas esferas plásticas), listos para ser inyectados en nuevos moldes.</li>
-            </ol>
-        </section>
-
-        <section id="iniciativas">
-            <h2>4. Innovación e Iniciativas en el Estado de Veracruz</h2>
-            <p>La sociedad y la academia veracruzana no se han quedado cruzadas de brazos. El estado destaca por sus respuestas locales:</p>
-            
-            <ul>
-                <li><strong>Innovación Veracruzana:</strong> Investigadores de universidades veracruzanas (como la UV) desarrollan prototipos de bloques de construcción (ladrillos ecológicos) mezclando arena con PET triturado, ofreciendo viviendas térmicas y de bajo costo.</li>
-                <li><strong>Iniciativas Sociales:</strong> Fundaciones locales organizan el "Reciclón", jornadas masivas donde ciudadanos intercambian kilos de PET por plantas endémicas o útiles escolares.</li>
-                <li><strong>Iniciativas Educativas:</strong> Escuelas de bachillerato en el estado compiten en torneos de recolección, usando los fondos obtenidos de la venta del plástico para mejorar la infraestructura de sus propias aulas.</li>
-            </ul>
-        </section>
-
-        <footer id="enlaces">
-            <h3>Enlaces de Interés y Fuentes:</h3>
-            <p>Amplía tus conocimientos consultando las fuentes oficiales:</p>
-            <ul>
-                <li><a href="https://www.ecoce.mx" target="_blank">ECOCE - Líderes en recolección de PET en México</a></li>
-                <li><a href="https://www.veracruz.gob.mx/medioambiente/" target="_blank">Secretaría de Medio Ambiente de Veracruz (SEDEMA)</a></li>
-            </ul>
-            <hr>
-            <p style="text-align: center;"><small>Proyecto Escolar de Bachillerato - 2026. Potenciado con HTML5, CSS3 y JavaScript.</small></p>
-        </footer>
-
-    </div>
-
-    <script>
-        // 1. FUNCIONALIDAD: MODO OSCURO
-        const botonTema = document.getElementById('btn-theme');
+    <section id="datos">
+        <h2>2. Reciclaje y Economía Circular: Panorama General</h2>
+        <p>El PET no tiene por qué ser un desperdicio; representa una gran alternativa frente a otros materiales si se gestiona bajo el modelo de la economía circular. A continuación, se presenta una comparativa de su uso:</p>
         
-        botonTema.addEventListener('click', function() {
-            // Alterna la clase 'dark-mode' en el cuerpo de la página
-            document.body.classList.toggle('dark-mode');
-            
-            // Cambia el texto del botón según el modo activo
-            if (document.body.classList.contains('dark-mode')) {
-                botonTema.textContent = 'Modo Claro';
-            } else {
-                botonTema.textContent = 'Modo Oscuro';
-            }
-        });
+        <table border="2" cellpadding="8" cellspacing="0" align="center" bgcolor="#FFFFFF">
+            <tr bgcolor="#A5D6A7">
+                <th>Concepto / Material</th>
+                <th>Ventajas del PET</th>
+                <th>Desventajas Actuales</th>
+            </tr>
+            <tr>
+                <td><b>Impacto en Veracruz</b></td>
+                <td>Alta tasa de recolección local.</td>
+                <td>Mucha acumulación en playas y ríos.</td>
+            </tr>
+            <tr>
+                <td><b>Comparativa Industrial</b></td>
+                <td>Económico, ligero y 100% reciclable.</td>
+                <td>Proviene originalmente del petróleo.</td>
+            </tr>
+        </table>
+    </section>
 
-        // 2. FUNCIONALIDAD: CONTADOR DE PET EN TIEMPO REAL
-        // Cálculo estimado: En México se desechan miles de botellas por minuto. 
-        // Para Veracruz estimamos matemáticamente un promedio de 8 botellas por segundo.
-        let cantidadBotellas = 0;
-        const contenedorContador = document.getElementById('contador-num');
+    <br>
 
-        function actualizarContador() {
-            cantidadBotellas += 8; // Suma 8 botellas simuladas cada segundo
-            contenedorContador.textContent = cantidadBotellas.toLocaleString(); // Le pone formato de miles (ej: 1,200)
-        }
+    <section id="proceso">
+        <h2>3. El Proceso de Reciclaje del PET</h2>
+        <p>Para transformar una botella usada en materia prima nueva, se sigue un riguroso proceso técnico:</p>
+        
+        <ol>
+            <li><strong>Acopio y Separación:</strong> Se recolectan las botellas en centros de reciclaje veracruzanos y se quitan tapas y etiquetas.</li>
+            <li><strong>Triturado:</strong> Las botellas se muelen hasta convertirse en pequeñas hojuelas plásticas.</li>
+            <li><strong>Lavado y Secado:</strong> Se eliminan impurezas, pegamentos y restos de líquido.</li>
+            <li><strong>Peletizado:</strong> El plástico limpio se funde para crear nuevos "pellets" listos para la fabricación.</li>
+        </ol>
+    </section>
 
-        // Ejecuta la función de arriba cada 1000 milisegundos (1 segundo)
-        setInterval(actualizarContador, 1000);
-    </script>
+    <section id="iniciativas">
+        <h2>4. Innovación e Iniciativas en el Estado de Veracruz</h2>
+        <p>En el estado de Veracruz existen diversos frentes abordando esta situación:</p>
+        
+        <ul>
+            <li><b>Innovación Veracruzana:</b> Universidades locales investigan cómo transformar el PET reciclado en materiales de construcción accesibles.</li>
+            <li><b>Iniciativas Sociales:</b> Grupos de ciudadanos organizan limpiezas de playas masivas en la zona conurbada Veracruz-Boca del Río.</li>
+            <li><b>Proyectos Educativos:</b> Escuelas de bachillerato implementan contenedores exclusivos para fomentar la cultura del reciclaje desde jóvenes.</li>
+        </ul>
+    </section>
+
+    <hr size="2" color="#A5D6A7">
+
+    <footer id="enlaces">
+        <h3>Enlaces de Interés y Fuentes:</h3>
+        <p>Para conocer más sobre el reciclaje de PET en México y Veracruz, puedes visitar los siguientes sitios oficiales:</p>
+        <ul>
+            <li><a href="https://www.ecoce.mx" target="_blank">ECOCE - Asociación Ambiental de la Industria de Envases</a></li>
+            <li><a href="https://www.veracruz.gob.mx/medioambiente/" target="_blank">Secretaría de Medio Ambiente de Veracruz (SEDEMA)</a></li>
+            </ul>
+        <hr size="1">
+        <p align="center"><small>Proyecto Escolar de Bachillerato - 2026. Hecho con HTML5 Puro.</small></p>
+    </footer>
 
 </body>
-</html>
+</html>       
