@@ -1,104 +1,358 @@
+<!DOCTYPE html>
 
- <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>El Uso y Reciclaje del PET en Veracruz</title>
-    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>El Uso del PET en el Estado de Veracruz</title>
 
-<body bgcolor="#E8F5E9" text="#1B5E20">
-    <nav>
-        <p align="center">
-            <a href="#introduccion"><b>Inicio</b></a> | 
-            <a href="#datos"><b>Estadísticas y Tablas</b></a> | 
-            <a href="#proceso"><b>Proceso de Reciclaje</b></a> | 
-            <a href="#iniciativas"><b>Iniciativas en Veracruz</b></a> | 
-            <a href="#enlaces"><b>Fuentes Externas</b></a>
-            </p>
-    </nav>
-    <hr size="3" color="#2E7D32">
+    <style>
+        /* Definición de variables CSS para la paleta de colores inspirada en el PET y el reciclaje */
+        :root {
+            --verde-oscuro: #004D40;   /* Verde botella institucional */
+            --verde-medio: #00796B;    /* Detalles y subtítulos */
+            --verde-claro: #E0F2F1;    /* Fondo suave de la página */
+            --verde-acento: #A7FFEB;   /* Efectos hover destacados */
+            --texto-oscuro: #212121;   /* Color del texto principal para alta legibilidad */
+            --blanco: #FFFFFF;
+        }
+
+        /* Estilos generales para el cuerpo del documento */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--verde-claro);
+            color: var(--texto-oscuro);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Estilos para la cabecera principal */
+        header {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            color: var(--verde-acento);
+            font-size: 1.1rem;
+        }
+
+        /* Estilos para la barra de navegación (nav) */
+        nav {
+            background-color: var(--verde-medio);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            position: sticky; /* Hace que el menú se quede fijo arriba al hacer scroll */
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Estilos para los enlaces del menú */
+        nav a {
+            color: var(--blanco);
+            text-decoration: none; /* Quita el subrayado azul por defecto */
+            padding: 0.5rem 1rem;
+            margin: 0.2rem;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease; /* Suaviza la transición de color */
+        }
+
+        /* Efecto cuando el mouse pasa por encima de un enlace */
+        nav a:hover {
+            background-color: var(--verde-oscuro);
+            color: var(--verde-acento);
+        }
+
+        /* Contenedor principal para centrar el contenido y darle márgenes ordenados */
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Estilos para las secciones semánticas */
+        section {
+            background-color: var(--blanco);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px; /* Bordes redondeados modernos */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+        }
+
+        section h2 {
+            color: var(--verde-oscuro);
+            border-bottom: 2px solid var(--verde-claro);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        /* Ajustes adaptables para las imágenes */
+        .img-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 3px solid var(--verde-claro);
+        }
+
+        /* Listas ordenadas y desordenadas estilizadas */
+        ol, ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Estilos avanzados para la tabla de datos */
+        .table-responsive {
+            overflow-x: auto; /* Permite scroll horizontal en celulares si la tabla es muy ancha */
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Une los bordes dobles de las celdas en uno solo */
+            background-color: var(--blanco);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        th {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+        }
+
+        /* Efecto cebra para las filas de la tabla */
+        tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+
+        /* Estilos para el contenedor del simulador interactivo de JavaScript */
+        .simulador-box {
+            background-color: #F5F5F5;
+            border-left: 5px solid var(--verde-medio);
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        /* Estilizado de inputs y botones nativos */
+        input[type="number"] {
+            padding: 0.5rem;
+            width: 80px;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--verde-medio);
+            color: var(--blanco);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--verde-oscuro);
+        }
+
+        .resultado-js {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--verde-oscuro);
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
     <header>
-        <h1 align="center">El Impacto y Manejo del PET en el Estado de Veracruz</h1>
-        <p align="center"><i>Una mirada hacia la sustentabilidad y la innovación veracruzana</i></p>
-        </header>
+        <h1>El Impacto y Reciclaje del PET en Veracruz</h1>
+        <p>Estudio Escolar sobre Sustentabilidad, Economía Circular e Innovación Regional</p>
+    </header>
 
-    <hr size="2" color="#A5D6A7">
+    <nav>
+        <a href="#impacto">Impacto y Persistencia</a>
+        <a href="#proceso">El Proceso de Reciclaje</a>
+        <a href="#alternativas">Alternativas y Versatilidad</a>
+        <a href="#datos">Datos en Veracruz</a>
+        <a href="#innovacion">Innovación y Sociedad</a>
+        <a href="https://www.veracruz.gob.mx/medioambiente/" target="_blank">SEDEMA Veracruz</a>
+    </nav>
 
-    <section id="introduccion">
-        <h2>1. Impacto Ambiental y Versatilidad del PET</h2>
-        <p>
-            El plástico <b>PET (Polietileno Tereftalato)</b> es uno de los materiales más utilizados en la industria veracruzana debido a su alta resistencia, ligereza y versatilidad industrial para envasar refrescos, aguas y alimentos. Sin embargo, su <u>persistencia en el medio ambiente</u> es alarmante, ya que puede tardar cientos de años en degradarse.
-        </p>
-        <p>
-            En un estado costero como Veracruz, la disposición inadecuada del PET alimenta de forma directa la <strong>contaminación oceánica</strong>, afectando gravemente a la fauna marina del Golfo de México y tapando los drenajes urbanos durante las temporadas de lluvias.
-        </p>
-        <p align="center">
-            <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=500" alt="Botellas de PET tiradas" width="400" border="1">
-            <br>
-            <small>Imagen 1: Botellas plásticas acumuladas, un desafío ambiental en nuestras costas.</small>
-        </p>
+    <main>
+
+        <section id="impacto">
+            <h2>1. Impacto Ambiental, Persistencia y Contaminación Oceánica</h2>
+            <p>El plástico <strong>PET (Polietileno Tereftalato)</strong> es uno de los materiales más utilizados en la industria de consumo en Veracruz. Sin embargo, su principal problemática radica en su alta <i>persistencia ambiental</i>: una sola botella de PET puede tardar entre <strong>100 y 500 años en degradarse</strong> por completo bajo condiciones naturales.</p>
+            
+            <p>Debido a fallas en los sistemas locales de gestión de residuos, miles de toneladas de plástico terminan en vertederos inadecuados. Las lluvias arrastran estos desechos hacia las cuencas de ríos vitales como el <b>Río Papaloapan, Coatzacoalcos y Jamapa</b>. El destino de este flujo es el <u>Golfo de México</u>, provocando una severa <strong>contaminación oceánica</strong> que daña el Sistema Arrecifal Veracruzano.</p>
+            
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600" alt="Botellas de PET recolectadas para reciclaje">
+                <br>
+                <small style="color: #666;"><i>Imagen ilustrativa: Acopio masivo de envases de PET listos para reciclaje.</i></small>
+            </div>
         </section>
 
-    <section id="datos">
-        <h2>2. Reciclaje y Economía Circular: Panorama General</h2>
-        <p>El PET no tiene por qué ser un desperdicio; representa una gran alternativa frente a otros materiales si se gestiona bajo el modelo de la economía circular. A continuación, se presenta una comparativa de su uso:</p>
-        
-        <table border="2" cellpadding="8" cellspacing="0" align="center" bgcolor="#FFFFFF">
-            <tr bgcolor="#A5D6A7">
-                <th>Concepto / Material</th>
-                <th>Ventajas del PET</th>
-                <th>Desventajas Actuales</th>
-            </tr>
-            <tr>
-                <td><b>Impacto en Veracruz</b></td>
-                <td>Alta tasa de recolección local.</td>
-                <td>Mucha acumulación en playas y ríos.</td>
-            </tr>
-            <tr>
-                <td><b>Comparativa Industrial</b></td>
-                <td>Económico, ligero y 100% reciclable.</td>
-                <td>Proviene originalmente del petróleo.</td>
-            </tr>
-        </table>
-    </section>
+        <section id="proceso">
+            <h2>2. El Proceso de Reciclaje y Economía Circular</h2>
+            <p>Para mitigar esto, Veracruz transita hacia un modelo de <strong>Economía Circular</strong>, donde el residuo se vuelve a integrar al mercado. El proceso técnico básico consta de los siguientes pasos:</p>
+            
+            <ol>
+                <li><strong>Separación y Acopio Colectivo:</strong> Recuperación de envases limpios, aplastados y cerrados.</li>
+                <li><strong>Clasificación por Color:</strong> Separación del PET cristal (más valioso) del azul o verde.</li>
+                <li><strong>Trituración o Molienda:</strong> El plástico se corta hasta formar hojuelas llamadas <i>flakes</i> o <i>pellets</i>.</li>
+                <li><strong>Lavado e Industrialización:</strong> Eliminación química de adhesivos, tapas e impurezas de contenidos previos.</li>
+                <li><strong>Extrusión:</strong> Fundición de la resina para dar vida a nuevos productos (rPET).</li>
+            </ol>
+        </section>
 
-    <br>
-
-    <section id="proceso">
-        <h2>3. El Proceso de Reciclaje del PET</h2>
-        <p>Para transformar una botella usada en materia prima nueva, se sigue un riguroso proceso técnico:</p>
-        
-        <ol>
-            <li><strong>Acopio y Separación:</strong> Se recolectan las botellas en centros de reciclaje veracruzanos y se quitan tapas y etiquetas.</li>
-            <li><strong>Triturado:</strong> Las botellas se muelen hasta convertirse en pequeñas hojuelas plásticas.</li>
-            <li><strong>Lavado y Secado:</strong> Se eliminan impurezas, pegamentos y restos de líquido.</li>
-            <li><strong>Peletizado:</strong> El plástico limpio se funde para crear nuevos "pellets" listos para la fabricación.</li>
-        </ol>
-    </section>
-
-    <section id="iniciativas">
-        <h2>4. Innovación e Iniciativas en el Estado de Veracruz</h2>
-        <p>En el estado de Veracruz existen diversos frentes abordando esta situación:</p>
-        
-        <ul>
-            <li><b>Innovación Veracruzana:</b> Universidades locales investigan cómo transformar el PET reciclado en materiales de construcción accesibles.</li>
-            <li><b>Iniciativas Sociales:</b> Grupos de ciudadanos organizan limpiezas de playas masivas en la zona conurbada Veracruz-Boca del Río.</li>
-            <li><b>Proyectos Educativos:</b> Escuelas de bachillerato implementan contenedores exclusivos para fomentar la cultura del reciclaje desde jóvenes.</li>
-        </ul>
-    </section>
-
-    <hr size="2" color="#A5D6A7">
-
-    <footer id="enlaces">
-        <h3>Enlaces de Interés y Fuentes:</h3>
-        <p>Para conocer más sobre el reciclaje de PET en México y Veracruz, puedes visitar los siguientes sitios oficiales:</p>
-        <ul>
-            <li><a href="https://www.ecoce.mx" target="_blank">ECOCE - Asociación Ambiental de la Industria de Envases</a></li>
-            <li><a href="https://www.veracruz.gob.mx/medioambiente/" target="_blank">Secretaría de Medio Ambiente de Veracruz (SEDEMA)</a></li>
+        <section id="alternativas">
+            <h2>3. Versatilidad Industrial y Alternativa a Otros Materiales</h2>
+            <p>El PET destaca por su sorprendente <b>versatilidad industrial</b>. Una vez recuperado, se hila para construir fibras textiles (ropa deportiva, alfombras), láminas termoformadas para empaques y componentes aislantes.</p>
+            
+            <p>Además, representa una excelente <strong>alternativa a otros materiales</strong> tradicionales en Veracruz:</p>
+            <ul>
+                <li>Frente al <b>Vidrio:</b> Su ligereza reduce drásticamente las emisiones de CO₂ durante su transporte terrestre por el estado.</li>
+                <li>Frente al <b>Aluminio:</b> Demanda menos gasto energético inicial para el moldeado que la fundición de bauxita.</li>
+                <li>Frente al <b>Cartón Plastificado:</b> Su composición monomaterial facilita un reciclaje directo comparado con empaques multicapa.</li>
             </ul>
-        <hr size="1">
-        <p align="center"><small>Proyecto Escolar de Bachillerato - 2026. Hecho con HTML5 Puro.</small></p>
+        </section>
+
+        <section id="datos">
+            <h2>4. Datos y Estadísticas del PET en el Estado de Veracruz</h2>
+            <p>La generación y recuperación de PET varía según la concentración de población de cada región del estado:</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Región Veracruzana</th>
+                            <th>Generación Estimada (Tons/Año)</th>
+                            <th>Porcentaje Recuperado</th>
+                            <th>Infraestructura de Acopio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Zona Metropolitana (Veracruz - Boca del Río)</b></td>
+                            <td>14,500</td>
+                            <td>48%</td>
+                            <td>Alta densidad de centros privados y pepenadores independientes.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Región Capital (Xalapa - Coatepec)</b></td>
+                            <td>9,800</td>
+                            <td>42%</td>
+                            <td>Centros municipales e iniciativas ciudadanas universitarias.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Zona Sur (Coatzacoalcos - Minatitlán)</b></td>
+                            <td>11,200</td>
+                            <td>35%</td>
+                            <td>Centros de transferencia medianos industriales.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Zona Norte (Poza Rica - Tuxpan)</b></td>
+                            <td>7,400</td>
+                            <td>31%</td>
+                            <td>Puntos de acopio locales enfocados en comercios turísticos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="innovacion">
+            <h2>5. Innovación Veracruzana e Iniciativas Sociales y Educativas</h2>
+            <p>El ingenio veracruzano responde activamente mediante la ciencia y la participación comunitaria organizada:</p>
+            
+            <ul>
+                <li><strong>Prototipos de "Ecoladrillos":</strong> Estudiantes e investigadores de la <i>Universidad Veracruzana (UV)</i> desarrollan bloques mezclando hojuelas de PET triturado con arena y cemento para edificación social térmica.</li>
+                <li><strong>Iniciativas Sociales (El "Tapatón"):</strong> Asociaciones civiles en el puerto recolectan tapas y botellas de PET para financiar tratamientos de niños con cáncer.</li>
+                <li><strong>Programas en Bachillerato:</strong> Escuelas del estado implementan contenedores específicos para destinar las ganancias del reciclaje al propio mantenimiento escolar.</li>
+            </ul>
+
+            <div class="simulador-box">
+                <h3><font color="#00796B">Simulador interactivo: Calcula tu Ecoladrillo</font></h3>
+                <p>Ingresa la cantidad aproximada de botellas de PET de 600ml que consumes o recolectas al mes para ver cuántos Ecoladrillos podrías fabricar junto con la UV:</p>
+                <label for="inputBotellas">Botellas recolectadas al mes: </label>
+                <input type="number" id="inputBotellas" min="0" value="20">
+                <button onclick="calcularEcoladrillos()">Calcular Impacto</button>
+                
+                <div id="resultadoSimulador" class="resultado-js">Haz clic en el botón para ver el resultado técnico.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><b>Proyecto Web Escolar - Nivel Bachillerato</b></p>
+        <p>&copy; 2026. Desarrollado con HTML5, CSS y JavaScript para control de versiones en GitHub.</p>
     </footer>
 
+    <script>
+        // Función declarada para calcular el impacto ecológico
+        function calcularEcoladrillos() {
+            // Obtenemos el valor numérico escrito por el usuario en el campo 'inputBotellas'
+            var botellas = document.getElementById("inputBotellas").value;
+            
+            // Validación básica para evitar números negativos
+            if (botellas < 0 || botellas === "") {
+                document.getElementById("resultadoSimulador").innerHTML = "Por favor ingresa un número válido de botellas.";
+                return; // Detiene la ejecución si el dato es incorrecto
+            }
+
+            // Datos técnicos estimados: Un ecoladrillo compacto de construcción requiere aprox. 30 botellas trituradas
+            var botellasPorLadrillo = 30;
+            var ladrillosCreados = (botellas / botellasPorLadrillo).toFixed(1); // Deja 1 solo decimal
+            
+            // Estimación del CO2 evitado (aprox 0.05 kg por botella no quemada/tirada)
+            var co2Evitado = (botellas * 0.05).toFixed(2);
+
+            // Inyectamos el texto dinámico y estructurado dentro de la división de resultados
+            document.getElementById("resultadoSimulador").innerHTML = 
+                "Con " + botellas + " botellas puedes fabricar aprox. " + ladrillosCreados + " ecoladrillos para viviendas ecológicas en Veracruz y estás mitigando de forma indirecta " + co2Evitado + " kg de contaminación ambiental en tu región.";
+        }
+    </script>
 </body>
-</html>       
+</html>
