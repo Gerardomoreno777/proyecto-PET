@@ -9,99 +9,135 @@
     <title>El Uso del PET en el Estado de Veracruz</title>
 
     <style>
-        /* Definición de variables CSS para la paleta de colores inspirada en el PET y el reciclaje */
+        /* Definición de variables CSS para la paleta de colores ampliada (Estilo Ecológico/PET) */
         :root {
-            --verde-oscuro: #004D40;   /* Verde botella institucional */
-            --verde-medio: #00796B;    /* Detalles y subtítulos */
-            --verde-claro: #E0F2F1;    /* Fondo suave de la página */
-            --verde-acento: #A7FFEB;   /* Efectos hover destacados */
-            --texto-oscuro: #212121;   /* Color del texto principal para alta legibilidad */
+            --verde-principal: #004D40;  /* Verde botella oscuro para identidad institucional */
+            --verde-secundario: #00796B; /* Verde medio para subtítulos y botones */
+            --verde-esmeralda: #009688;  /* Color vivo para resaltar elementos clave */
+            --verde-menta: #E0F2F1;      /* Fondo base suave */
+            --verde-pastel: #E8F5E9;     /* Fondo secundario sutil */
+            --azul-cristal: #E1F5FE;     /* Inspirado en el PET transparente */
+            --azul-marino: #1A237E;      /* Contraste para textos destacados */
+            --texto-principal: #263238;  /* Gris oscuro azulado de alta legibilidad */
             --blanco: #FFFFFF;
+        }
+
+        /* CONFIGURACIÓN DE LA ANIMACIÓN DE ENTRADA (TRANSIÓN) 
+           Creamos un efecto 'Fade In' con desplazamiento hacia arriba */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px); /* Empieza 30 píxeles más abajo */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);    /* Termina en su posición original */
+            }
         }
 
         /* Estilos generales para el cuerpo del documento */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--verde-claro);
-            color: var(--texto-oscuro);
+            /* Aplicamos un degradado de fondo fluido en vez de un color plano */
+            background: linear-gradient(135deg, var(--verde-menta) 0%, #F5F5F5 50%, var(--azul-cristal) 100%);
+            background-attachment: fixed; /* Mantiene el degradado fijo al hacer scroll */
+            color: var(--texto-principal);
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
-        /* Estilos para la cabecera principal */
+        /* Estilos para la cabecera principal con degradado llamativo */
         header {
-            background-color: var(--verde-oscuro);
+            background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-secundario) 100%);
             color: var(--blanco);
             text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            /* Aplicamos la transición de entrada a la cabecera */
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.3rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra al texto para mayor impacto */
         }
 
         header p {
-            margin: 0.5rem 0 0 0;
-            color: var(--verde-acento);
-            font-size: 1.1rem;
+            margin: 0.7rem 0 0 0;
+            color: #A7FFEB;
+            font-size: 1.2rem;
+            font-weight: 300;
         }
 
         /* Estilos para la barra de navegación (nav) */
         nav {
-            background-color: var(--verde-medio);
+            background-color: var(--verde-principal);
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            padding: 0.5rem;
-            position: sticky; /* Hace que el menú se quede fijo arriba al hacer scroll */
+            padding: 0.6rem;
+            position: sticky; /* Menú flotante superior fijo */
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         /* Estilos para los enlaces del menú */
         nav a {
             color: var(--blanco);
-            text-decoration: none; /* Quita el subrayado azul por defecto */
-            padding: 0.5rem 1rem;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
             margin: 0.2rem;
             font-weight: bold;
-            border-radius: 4px;
-            transition: background-color 0.3s ease; /* Suaviza la transición de color */
+            border-radius: 20px; /* Bordes completamente redondeados estilo píldora */
+            transition: all 0.3s ease; /* Transición interna para efectos hover suaves */
         }
 
-        /* Efecto cuando el mouse pasa por encima de un enlace */
+        /* Efecto dinámico al pasar el mouse por los enlaces */
         nav a:hover {
-            background-color: var(--verde-oscuro);
-            color: var(--verde-acento);
+            background-color: var(--blanco);
+            color: var(--verde-principal);
+            transform: scale(1.05); /* Escala ligeramente el botón */
         }
 
-        /* Contenedor principal para centrar el contenido y darle márgenes ordenados */
+        /* Contenedor principal del contenido */
         main {
             max-width: 1000px;
-            margin: 2rem auto;
+            margin: 2.5rem auto;
             padding: 0 1rem;
         }
 
-        /* Estilos para las secciones semánticas */
+        /* Estilos para las secciones que actúan como "Tarjetas" */
         section {
             background-color: var(--blanco);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px; /* Bordes redondeados modernos */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-radius: 12px; /* Esquinas más curvadas modernas */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--verde-esmeralda); /* Detalle de color en el borde superior */
+            
+            /* Aplicamos la transición de entrada a todas las secciones */
+            animation: fadeInUp 1s ease-out forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Para el efecto hover de la tarjeta */
+        }
+
+        /* Efecto interactivo 3D al pasar el mouse por encima de una sección */
+        section:hover {
+            transform: translateY(-5px); /* Eleva la tarjeta */
+            box-shadow: 0 8px 20px rgba(0, 47, 40, 0.15); /* Intensifica la sombra con tono verde */
         }
 
         section h2 {
-            color: var(--verde-oscuro);
-            border-bottom: 2px solid var(--verde-claro);
-            padding-bottom: 0.5rem;
+            color: var(--azul-marino);
             margin-top: 0;
+            font-size: 1.6rem;
+            border-bottom: 2px solid var(--verde-menta);
+            padding-bottom: 0.6rem;
         }
 
-        /* Ajustes adaptables para las imágenes */
+        /* Ajustes adaptables y decorados para las imágenes */
         .img-container {
             text-align: center;
             margin: 1.5rem 0;
@@ -110,94 +146,129 @@
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 6px;
-            border: 3px solid var(--verde-claro);
+            border-radius: 8px;
+            border: 4px solid var(--azul-cristal);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        /* Listas ordenadas y desordenadas estilizadas */
-        ol, ul {
-            padding-left: 1.5rem;
+        /* Listas ordenadas y desordenadas con estilos de color */
+        ol li::marker {
+            color: var(--verde-esmeralda); /* Cambia el color de los números */
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: square; /* Viñetas cuadradas */
+            color: var(--texto-principal);
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
-        /* Estilos avanzados para la tabla de datos */
+        /* Estilos avanzados y coloridos para la tabla de datos */
         .table-responsive {
-            overflow-x: auto; /* Permite scroll horizontal en celulares si la tabla es muy ancha */
-            margin-top: 1rem;
+            overflow-x: auto;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         table {
             width: 100%;
-            border-collapse: collapse; /* Une los bordes dobles de las celdas en uno solo */
+            border-collapse: collapse;
             background-color: var(--blanco);
         }
 
         th, td {
-            padding: 12px 15px;
+            padding: 14px 18px;
             text-align: left;
-            border-bottom: 1px solid #E0E0E0;
         }
 
         th {
-            background-color: var(--verde-oscuro);
+            background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-secundario) 100%);
             color: var(--blanco);
+            font-weight: 600;
         }
 
-        /* Efecto cebra para las filas de la tabla */
+        /* Efecto cebra colorido usando fondos pastel */
         tr:nth-child(even) {
-            background-color: #F9F9F9;
+            background-color: var(--verde-pastel);
+        }
+        tr:nth-child(odd) {
+            background-color: var(--blanco);
         }
 
-        /* Estilos para el contenedor del simulador interactivo de JavaScript */
+        /* Resaltado cuando el mouse pasa sobre una fila de la tabla */
+        tr:hover {
+            background-color: var(--azul-cristal);
+        }
+
+        /* Estilos coloridos para el simulador de JavaScript */
         .simulador-box {
-            background-color: #F5F5F5;
-            border-left: 5px solid var(--verde-medio);
-            padding: 1.5rem;
-            margin-top: 1rem;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #F5F7FA 0%, var(--azul-cristal) 100%);
+            border-left: 6px solid var(--verde-esmeralda);
+            padding: 2rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        /* Estilizado de inputs y botones nativos */
+        .simulador-box h3 {
+            margin-top: 0;
+            color: var(--verde-principal);
+        }
+
+        /* Estilizado avanzado de entradas numéricas y botones */
         input[type="number"] {
-            padding: 0.5rem;
-            width: 80px;
-            border: 1px solid #CCC;
-            border-radius: 4px;
+            padding: 0.6rem;
+            width: 90px;
+            border: 2px solid var(--verde-secundario);
+            border-radius: 6px;
             font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--azul-marino); /* Cambia de color al hacer clic dentro */
         }
 
         button {
-            background-color: var(--verde-medio);
+            background: linear-gradient(135deg, var(--verde-secundario) 0%, var(--verde-esmeralda) 100%);
             color: var(--blanco);
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.4rem;
             font-size: 1rem;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background-color: var(--verde-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .resultado-js {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             font-weight: bold;
-            color: var(--verde-oscuro);
+            color: var(--azul-marino);
+            background-color: var(--blanco);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px dashed var(--verde-esmeralda);
         }
 
         /* Estilos para el pie de página */
         footer {
-            background-color: var(--verde-oscuro);
+            background: linear-gradient(135deg, var(--verde-principal) 0%, #111 100%);
             color: var(--blanco);
             text-align: center;
-            padding: 1.5rem 1rem;
-            margin-top: 3rem;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
             font-size: 0.9rem;
         }
     </style>
@@ -313,7 +384,7 @@
             </ul>
 
             <div class="simulador-box">
-                <h3><font color="#00796B">Simulador interactivo: Calcula tu Ecoladrillo</font></h3>
+                <h3>Simulador interactivo: Calcula tu Ecoladrillo</h3>
                 <p>Ingresa la cantidad aproximada de botellas de PET de 600ml que consumes o recolectas al mes para ver cuántos Ecoladrillos podrías fabricar junto con la UV:</p>
                 <label for="inputBotellas">Botellas recolectadas al mes: </label>
                 <input type="number" id="inputBotellas" min="0" value="20">
