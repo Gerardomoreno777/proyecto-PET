@@ -1,426 +1,359 @@
+<!-- La etiqueta DOCTYPE define que este documento es un archivo HTML5 moderno -->
 <!DOCTYPE html>
 
+<!-- La etiqueta html es la raíz del documento. lang="es" define el idioma oficial en español -->
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>El Uso del PET en el Estado de Veracruz</title>
 
+    <!-- Código CSS para el diseño, los colores y las transiciones de las páginas -->
     <style>
-        /* Definición de variables CSS para la paleta de colores ampliada (Estilo Ecológico/PET) */
+        /* Variables de la paleta de colores ecológicos */
         :root {
-            --verde-principal: #004D40;  /* Verde botella oscuro para identidad institucional */
-            --verde-secundario: #00796B; /* Verde medio para subtítulos y botones */
-            --verde-esmeralda: #009688;  /* Color vivo para resaltar elementos clave */
-            --verde-menta: #E0F2F1;      /* Fondo base suave */
-            --verde-pastel: #E8F5E9;     /* Fondo secundario sutil */
-            --azul-cristal: #E1F5FE;     /* Inspirado en el PET transparente */
-            --azul-marino: #1A237E;      /* Contraste para textos destacados */
-            --texto-principal: #263238;  /* Gris oscuro azulado de alta legibilidad */
+            --verde-principal: #004D40;
+            --verde-secundario: #00796B;
+            --verde-esmeralda: #009688;
+            --verde-menta: #E0F2F1;
+            --verde-pastel: #E8F5E9;
+            --azul-cristal: #E1F5FE;
+            --azul-marino: #1A237E;
+            --texto-principal: #263238;
             --blanco: #FFFFFF;
         }
 
-        /* CONFIGURACIÓN DE LA ANIMACIÓN DE ENTRADA (TRANSIÓN) 
-           Creamos un efecto 'Fade In' con desplazamiento hacia arriba */
+        /* Animaciones CSS */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px); /* Empieza 30 píxeles más abajo */
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);    /* Termina en su posición original */
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Estilos generales para el cuerpo del documento */
+        @keyframes fondoAnimado {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Aplicamos un degradado de fondo fluido en vez de un color plano */
-            background: linear-gradient(135deg, var(--verde-menta) 0%, #F5F5F5 50%, var(--azul-cristal) 100%);
-            background-attachment: fixed; /* Mantiene el degradado fijo al hacer scroll */
-            color: var(--texto-principal);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            color: var(--texto-principal);
+            background-color: var(--verde-menta);
         }
 
-        /* Estilos para la cabecera principal con degradado llamativo */
+        /* ==========================================================================
+           ESTILOS DE LA PANTALLA DE ENTRADA (BIENVENIDA)
+           ========================================================================== */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* Degradado en movimiento continuo */
+            background: linear-gradient(-45deg, var(--verde-principal), var(--verde-secundario), var(--verde-esmeralda), #00bfa5);
+            background-size: 400% 400%;
+            animation: fondoAnimado 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, transform 0.8s ease; /* Transición cuando desaparece */
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 90%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .welcome-card h1 {
+            color: var(--verde-principal);
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        /* El botón principal de acceso con efectos y transiciones */
+        .btn-entrar {
+            background: linear-gradient(135deg, var(--verde-secundario), var(--verde-esmeralda));
+            color: var(--blanco);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 150, 136, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .btn-entrar:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 150, 136, 0.6);
+        }
+
+        /* Clase CSS que usará JavaScript para ocultar la pantalla con suavidad */
+        .hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none; /* Evita que el usuario pueda dar clic mientras se desvanece */
+        }
+
+
+        /* ==========================================================================
+           ESTILOS DEL CONTENIDO DEL PROYECTO (OCULTO AL INICIO)
+           ========================================================================== */
+        #main-content {
+            display: none; /* JavaScript cambiará esto a 'block' al pulsar el botón */
+            background: linear-gradient(135deg, var(--verde-menta) 0%, #F5F5F5 50%, var(--azul-cristal) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Estilos de la estructura interna (Mismos de la versión anterior) */
         header {
             background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-secundario) 100%);
             color: var(--blanco);
             text-align: center;
             padding: 2.5rem 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            /* Aplicamos la transición de entrada a la cabecera */
-            animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra al texto para mayor impacto */
-        }
+        header h1 { margin: 0; font-size: 2.3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { margin: 0.7rem 0 0 0; color: #A7FFEB; font-size: 1.1rem; }
 
-        header p {
-            margin: 0.7rem 0 0 0;
-            color: #A7FFEB;
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-
-        /* Estilos para la barra de navegación (nav) */
         nav {
             background-color: var(--verde-principal);
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             padding: 0.6rem;
-            position: sticky; /* Menú flotante superior fijo */
+            position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Estilos para los enlaces del menú */
         nav a {
             color: var(--blanco);
             text-decoration: none;
             padding: 0.6rem 1.2rem;
             margin: 0.2rem;
             font-weight: bold;
-            border-radius: 20px; /* Bordes completamente redondeados estilo píldora */
-            transition: all 0.3s ease; /* Transición interna para efectos hover suaves */
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
-        /* Efecto dinámico al pasar el mouse por los enlaces */
         nav a:hover {
             background-color: var(--blanco);
             color: var(--verde-principal);
-            transform: scale(1.05); /* Escala ligeramente el botón */
+            transform: scale(1.05);
         }
 
-        /* Contenedor principal del contenido */
-        main {
-            max-width: 1000px;
-            margin: 2.5rem auto;
-            padding: 0 1rem;
-        }
+        main { max-width: 1000px; margin: 2.5rem auto; padding: 0 1rem; }
 
-        /* Estilos para las secciones que actúan como "Tarjetas" */
         section {
             background-color: var(--blanco);
             padding: 2.5rem;
             margin-bottom: 2.5rem;
-            border-radius: 12px; /* Esquinas más curvadas modernas */
+            border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--verde-esmeralda); /* Detalle de color en el borde superior */
-            
-            /* Aplicamos la transición de entrada a todas las secciones */
-            animation: fadeInUp 1s ease-out forwards;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Para el efecto hover de la tarjeta */
+            border-top: 4px solid var(--verde-esmeralda);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efecto interactivo 3D al pasar el mouse por encima de una sección */
         section:hover {
-            transform: translateY(-5px); /* Eleva la tarjeta */
-            box-shadow: 0 8px 20px rgba(0, 47, 40, 0.15); /* Intensifica la sombra con tono verde */
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 47, 40, 0.15);
         }
 
-        section h2 {
-            color: var(--azul-marino);
-            margin-top: 0;
-            font-size: 1.6rem;
-            border-bottom: 2px solid var(--verde-menta);
-            padding-bottom: 0.6rem;
-        }
+        section h2 { color: var(--azul-marino); margin-top: 0; font-size: 1.6rem; border-bottom: 2px solid var(--verde-menta); padding-bottom: 0.6rem; }
+        .img-container { text-align: center; margin: 1.5rem 0; }
+        img { max-width: 100%; height: auto; border-radius: 8px; border: 4px solid var(--azul-cristal); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        ol li::marker { color: var(--verde-esmeralda); font-weight: bold; }
+        ul { list-style-type: square; }
+        li { margin-bottom: 0.6rem; }
 
-        /* Ajustes adaptables y decorados para las imágenes */
-        .img-container {
-            text-align: center;
-            margin: 1.5rem 0;
-        }
+        .table-responsive { overflow-x: auto; margin-top: 1.5rem; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; background-color: var(--blanco); }
+        th, td { padding: 14px 18px; text-align: left; }
+        th { background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-secundario) 100%); color: var(--blanco); }
+        tr:nth-child(even) { background-color: var(--verde-pastel); }
+        tr:hover { background-color: var(--azul-cristal); }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            border: 4px solid var(--azul-cristal);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        /* Listas ordenadas y desordenadas con estilos de color */
-        ol li::marker {
-            color: var(--verde-esmeralda); /* Cambia el color de los números */
-            font-weight: bold;
-        }
-
-        ul {
-            list-style-type: square; /* Viñetas cuadradas */
-            color: var(--texto-principal);
-        }
-
-        li {
-            margin-bottom: 0.6rem;
-        }
-
-        /* Estilos avanzados y coloridos para la tabla de datos */
-        .table-responsive {
-            overflow-x: auto;
-            margin-top: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--blanco);
-        }
-
-        th, td {
-            padding: 14px 18px;
-            text-align: left;
-        }
-
-        th {
-            background: linear-gradient(135deg, var(--verde-principal) 0%, var(--verde-secundario) 100%);
-            color: var(--blanco);
-            font-weight: 600;
-        }
-
-        /* Efecto cebra colorido usando fondos pastel */
-        tr:nth-child(even) {
-            background-color: var(--verde-pastel);
-        }
-        tr:nth-child(odd) {
-            background-color: var(--blanco);
-        }
-
-        /* Resaltado cuando el mouse pasa sobre una fila de la tabla */
-        tr:hover {
-            background-color: var(--azul-cristal);
-        }
-
-        /* Estilos coloridos para el simulador de JavaScript */
         .simulador-box {
             background: linear-gradient(135deg, #F5F7FA 0%, var(--azul-cristal) 100%);
             border-left: 6px solid var(--verde-esmeralda);
             padding: 2rem;
             margin-top: 1.5rem;
             border-radius: 8px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .simulador-box h3 {
-            margin-top: 0;
-            color: var(--verde-principal);
-        }
+        input[type="number"] { padding: 0.6rem; width: 90px; border: 2px solid var(--verde-secundario); border-radius: 6px; font-size: 1rem; outline: none; }
+        .simulador-box button { background: linear-gradient(135deg, var(--verde-secundario) 0%, var(--verde-esmeralda) 100%); color: var(--blanco); border: none; padding: 0.6rem 1.4rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.3s; }
+        .simulador-box button:hover { transform: translateY(-2px); }
+        .resultado-js { margin-top: 1.5rem; font-weight: bold; color: var(--azul-marino); background-color: var(--blanco); padding: 1rem; border-radius: 6px; border: 1px dashed var(--verde-esmeralda); }
 
-        /* Estilizado avanzado de entradas numéricas y botones */
-        input[type="number"] {
-            padding: 0.6rem;
-            width: 90px;
-            border: 2px solid var(--verde-secundario);
-            border-radius: 6px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input[type="number"]:focus {
-            border-color: var(--azul-marino); /* Cambia de color al hacer clic dentro */
-        }
-
-        button {
-            background: linear-gradient(135deg, var(--verde-secundario) 0%, var(--verde-esmeralda) 100%);
-            color: var(--blanco);
-            border: none;
-            padding: 0.6rem 1.4rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .resultado-js {
-            margin-top: 1.5rem;
-            font-weight: bold;
-            color: var(--azul-marino);
-            background-color: var(--blanco);
-            padding: 1rem;
-            border-radius: 6px;
-            border: 1px dashed var(--verde-esmeralda);
-        }
-
-        /* Estilos para el pie de página */
-        footer {
-            background: linear-gradient(135deg, var(--verde-principal) 0%, #111 100%);
-            color: var(--blanco);
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-            font-size: 0.9rem;
-        }
+        footer { background: linear-gradient(135deg, var(--verde-principal) 0%, #111 100%); color: var(--blanco); text-align: center; padding: 2rem 1rem; margin-top: 4rem; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>El Impacto y Reciclaje del PET en Veracruz</h1>
-        <p>Estudio Escolar sobre Sustentabilidad, Economía Circular e Innovación Regional</p>
-    </header>
+    <!-- ==========================================================================
+       PANTALLA DE ENTRADA / BIENVENIDA
+       ========================================================================== -->
+    <div id="welcome-screen">
+        <div class="welcome-card">
+            <h1>Proyecto Escolar:<br>El PET en Veracruz</h1>
+            <p>Descubre el impacto ambiental, los datos estadísticos y las innovaciones sustentables en nuestro estado.</p>
+            <!-- Al dar clic aquí, la función JS 'ingresarAlSitio()' se ejecuta -->
+            <button class="btn-entrar" onclick="ingresarAlSitio()">Ingresar al Proyecto</button>
+        </div>
+    </div>
 
-    <nav>
-        <a href="#impacto">Impacto y Persistencia</a>
-        <a href="#proceso">El Proceso de Reciclaje</a>
-        <a href="#alternativas">Alternativas y Versatilidad</a>
-        <a href="#datos">Datos en Veracruz</a>
-        <a href="#innovacion">Innovación y Sociedad</a>
-        <a href="https://www.veracruz.gob.mx/medioambiente/" target="_blank">SEDEMA Veracruz</a>
-    </nav>
 
-    <main>
+    <!-- ==========================================================================
+       CONTENIDO COMPLETO DE LA PÁGINA (PÁGINA PRINCIPAL)
+       ========================================================================== -->
+    <div id="main-content">
+        <header>
+            <h1>El Impacto y Reciclaje del PET en Veracruz</h1>
+            <p>Estudio Escolar sobre Sustentabilidad, Economía Circular e Innovación Regional</p>
+        </header>
 
-        <section id="impacto">
-            <h2>1. Impacto Ambiental, Persistencia y Contaminación Oceánica</h2>
-            <p>El plástico <strong>PET (Polietileno Tereftalato)</strong> es uno de los materiales más utilizados en la industria de consumo en Veracruz. Sin embargo, su principal problemática radica en su alta <i>persistencia ambiental</i>: una sola botella de PET puede tardar entre <strong>100 y 500 años en degradarse</strong> por completo bajo condiciones naturales.</p>
-            
-            <p>Debido a fallas en los sistemas locales de gestión de residuos, miles de toneladas de plástico terminan en vertederos inadecuados. Las lluvias arrastran estos desechos hacia las cuencas de ríos vitales como el <b>Río Papaloapan, Coatzacoalcos y Jamapa</b>. El destino de este flujo es el <u>Golfo de México</u>, provocando una severa <strong>contaminación oceánica</strong> que daña el Sistema Arrecifal Veracruzano.</p>
-            
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600" alt="Botellas de PET recolectadas para reciclaje">
-                <br>
-                <small style="color: #666;"><i>Imagen ilustrativa: Acopio masivo de envases de PET listos para reciclaje.</i></small>
-            </div>
-        </section>
+        <nav>
+            <a href="#impacto">Impacto y Persistencia</a>
+            <a href="#proceso">El Proceso de Reciclaje</a>
+            <a href="#alternativas">Alternativas y Versatilidad</a>
+            <a href="#datos">Datos en Veracruz</a>
+            <a href="#innovacion">Innovación y Sociedad</a>
+            <a href="https://www.veracruz.gob.mx/medioambiente/" target="_blank">SEDEMA Veracruz</a>
+        </nav>
 
-        <section id="proceso">
-            <h2>2. El Proceso de Reciclaje y Economía Circular</h2>
-            <p>Para mitigar esto, Veracruz transita hacia un modelo de <strong>Economía Circular</strong>, donde el residuo se vuelve a integrar al mercado. El proceso técnico básico consta de los siguientes pasos:</p>
-            
-            <ol>
-                <li><strong>Separación y Acopio Colectivo:</strong> Recuperación de envases limpios, aplastados y cerrados.</li>
-                <li><strong>Clasificación por Color:</strong> Separación del PET cristal (más valioso) del azul o verde.</li>
-                <li><strong>Trituración o Molienda:</strong> El plástico se corta hasta formar hojuelas llamadas <i>flakes</i> o <i>pellets</i>.</li>
-                <li><strong>Lavado e Industrialización:</strong> Eliminación química de adhesivos, tapas e impurezas de contenidos previos.</li>
-                <li><strong>Extrusión:</strong> Fundición de la resina para dar vida a nuevos productos (rPET).</li>
-            </ol>
-        </section>
+        <main>
+            <section id="impacto">
+                <h2>1. Impacto Ambiental, Persistencia y Contaminación Oceánica</h2>
+                <p>El plástico <strong>PET (Polietileno Tereftalato)</strong> es uno de los materiales más utilizados en la industria de consumo en Veracruz. Sin embargo, su principal problemática radica en su alta <i>persistencia ambiental</i>: una sola botella de PET puede tardar entre <strong>100 y 500 años en degradarse</strong> por completo bajo condiciones naturales.</p>
+                <p>Debido a fallas en los sistemas locales de gestión de residuos, miles de toneladas de plástico terminan en vertederos inadecuados. Las lluvias arrastran estos desechos hacia las cuencas de ríos vitales como el <b>Río Papaloapan, Coatzacoalcos y Jamapa</b>. El destino de este flujo es el <u>Golfo de México</u>, provocando una severa <strong>contaminación oceánica</strong> que daña el Sistema Arrecifal Veracruzano.</p>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600" alt="Botellas de PET recolectadas para reciclaje">
+                    <br><small style="color: #666;"><i>Imagen ilustrativa: Acopio masivo de envases de PET listos para reciclaje.</i></small>
+                </div>
+            </section>
 
-        <section id="alternativas">
-            <h2>3. Versatilidad Industrial y Alternativa a Otros Materiales</h2>
-            <p>El PET destaca por su sorprendente <b>versatilidad industrial</b>. Una vez recuperado, se hila para construir fibras textiles (ropa deportiva, alfombras), láminas termoformadas para empaques y componentes aislantes.</p>
-            
-            <p>Además, representa una excelente <strong>alternativa a otros materiales</strong> tradicionales en Veracruz:</p>
-            <ul>
-                <li>Frente al <b>Vidrio:</b> Su ligereza reduce drásticamente las emisiones de CO₂ durante su transporte terrestre por el estado.</li>
-                <li>Frente al <b>Aluminio:</b> Demanda menos gasto energético inicial para el moldeado que la fundición de bauxita.</li>
-                <li>Frente al <b>Cartón Plastificado:</b> Su composición monomaterial facilita un reciclaje directo comparado con empaques multicapa.</li>
-            </ul>
-        </section>
+            <section id="proceso">
+                <h2>2. El Proceso de Reciclaje y Economía Circular</h2>
+                <p>Para mitigar esto, Veracruz transita hacia un modelo de <strong>Economía Circular</strong>, donde el residuo se vuelve a integrar al mercado. El proceso técnico básico consta de los siguientes pasos:</p>
+                <ol>
+                    <li><strong>Separación y Acopio Colectivo:</strong> Recuperación de envases limpios, aplastados y cerrados.</li>
+                    <li><strong>Clasificación por Color:</strong> Separación del PET cristal (más valioso) del azul o verde.</li>
+                    <li><strong>Trituración o Molienda:</strong> El plástico se corta hasta formar hojuelas llamadas <i>flakes</i> o <i>pellets</i>.</li>
+                    <li><strong>Lavado e Industrialización:</strong> Eliminación química de adhesivos, tapas e impurezas de contenidos previos.</li>
+                    <li><strong>Extrusión:</strong> Fundición de la resina para dar vida a nuevos productos (rPET).</li>
+                </ol>
+            </section>
 
-        <section id="datos">
-            <h2>4. Datos y Estadísticas del PET en el Estado de Veracruz</h2>
-            <p>La generación y recuperación de PET varía según la concentración de población de cada región del estado:</p>
-            
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Región Veracruzana</th>
-                            <th>Generación Estimada (Tons/Año)</th>
-                            <th>Porcentaje Recuperado</th>
-                            <th>Infraestructura de Acopio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><b>Zona Metropolitana (Veracruz - Boca del Río)</b></td>
-                            <td>14,500</td>
-                            <td>48%</td>
-                            <td>Alta densidad de centros privados y pepenadores independientes.</td>
-                        </tr>
-                        <tr>
-                            <td><b>Región Capital (Xalapa - Coatepec)</b></td>
-                            <td>9,800</td>
-                            <td>42%</td>
-                            <td>Centros municipales e iniciativas ciudadanas universitarias.</td>
-                        </tr>
-                        <tr>
-                            <td><b>Zona Sur (Coatzacoalcos - Minatitlán)</b></td>
-                            <td>11,200</td>
-                            <td>35%</td>
-                            <td>Centros de transferencia medianos industriales.</td>
-                        </tr>
-                        <tr>
-                            <td><b>Zona Norte (Poza Rica - Tuxpan)</b></td>
-                            <td>7,400</td>
-                            <td>31%</td>
-                            <td>Puntos de acopio locales enfocados en comercios turísticos.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+            <section id="alternativas">
+                <h2>3. Versatilidad Industrial y Alternative a Otros Materiales</h2>
+                <p>El PET destaca por su sorprendente <b>versatilidad industrial</b>. Una vez recuperado, se hila para construir fibras textiles (ropa deportiva, alfombras), láminas termoformadas para empaques y componentes aislantes.</p>
+                <p>Además, representa una excelente <strong>alternativa a otros materiales</strong> tradicionales en Veracruz:</p>
+                <ul>
+                    <li>Frente al <b>Vidrio:</b> Su ligereza reduce drásticamente las emisiones de CO₂ durante su transporte terrestre por el estado.</li>
+                    <li>Frente al <b>Aluminio:</b> Demanda menos gasto energético inicial para el moldeado que la fundición de bauxita.</li>
+                    <li>Frente al <b>Cartón Plastificado:</b> Su composición monomaterial facilita un reciclaje directo comparado con empaques multicapa.</li>
+                </ul>
+            </section>
 
-        <section id="innovacion">
-            <h2>5. Innovación Veracruzana e Iniciativas Sociales y Educativas</h2>
-            <p>El ingenio veracruzano responde activamente mediante la ciencia y la participación comunitaria organizada:</p>
-            
-            <ul>
-                <li><strong>Prototipos de "Ecoladrillos":</strong> Estudiantes e investigadores de la <i>Universidad Veracruzana (UV)</i> desarrollan bloques mezclando hojuelas de PET triturado con arena y cemento para edificación social térmica.</li>
-                <li><strong>Iniciativas Sociales (El "Tapatón"):</strong> Asociaciones civiles en el puerto recolectan tapas y botellas de PET para financiar tratamientos de niños con cáncer.</li>
-                <li><strong>Programas en Bachillerato:</strong> Escuelas del estado implementan contenedores específicos para destinar las ganancias del reciclaje al propio mantenimiento escolar.</li>
-            </ul>
+            <section id="datos">
+                <h2>4. Datos y Estadísticas del PET en el Estado de Veracruz</h2>
+                <p>La generación y recuperación de PET varía según la concentración de población de cada región del estado:</p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Región Veracruzana</th>
+                                <th>Generación Estimada (Tons/Año)</th>
+                                <th>Porcentaje Recuperado</th>
+                                <th>Infraestructura de Acopio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><b>Zona Metropolitana (Veracruz - Boca del Río)</b></td><td>14,500</td><td>48%</td><td>Alta densidad de centros privados y pepenadores independientes.</td></tr>
+                            <tr><td><b>Región Capital (Xalapa - Coatepec)</b></td><td>9,800</td><td>42%</td><td>Centros municipales e iniciativas ciudadanas universitarias.</td></tr>
+                            <tr><td><b>Zona Sur (Coatzacoalcos - Minatitlán)</b></td><td>11,200</td><td>35%</td><td>Centros de transferencia medianos industriales.</td></tr>
+                            <tr><td><b>Zona Norte (Poza Rica - Tuxpan)</b></td><td>7,400</td><td>31%</td><td>Puntos de acopio locales enfocados en comercios turísticos.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-            <div class="simulador-box">
-                <h3>Simulador interactivo: Calcula tu Ecoladrillo</h3>
-                <p>Ingresa la cantidad aproximada de botellas de PET de 600ml que consumes o recolectas al mes para ver cuántos Ecoladrillos podrías fabricar junto con la UV:</p>
-                <label for="inputBotellas">Botellas recolectadas al mes: </label>
-                <input type="number" id="inputBotellas" min="0" value="20">
-                <button onclick="calcularEcoladrillos()">Calcular Impacto</button>
-                
-                <div id="resultadoSimulador" class="resultado-js">Haz clic en el botón para ver el resultado técnico.</div>
-            </div>
-        </section>
+            <section id="innovacion">
+                <h2>5. Innovación Veracruzana e Iniciativas Sociales y Educativas</h2>
+                <p>El ingenio veracruzano responde activamente mediante la ciencia y la participación comunitaria organizada:</p>
+                <ul>
+                    <li><strong>Prototipos de "Ecoladrillos":</strong> Estudiantes e investigadores de la <i>Universidad Veracruzana (UV)</i> desarrollan bloques mezclando hojuelas de PET triturado con arena y cemento para edificación social térmica.</li>
+                    <li><strong>Iniciativas Sociales (El "Tapatón"):</strong> Asociaciones civiles en el puerto recolectan tapas y botellas de PET para financiar tratamientos de niños con cáncer.</li>
+                    <li><strong>Programas en Bachillerato:</strong> Escuelas del estado implementan contenedores específicos para destinar las ganancias del reciclaje al propio mantenimiento escolar.</li>
+                </ul>
 
-    </main>
+                <div class="simulador-box">
+                    <h3>Simulador interactivo: Calcula tu Ecoladrillo</h3>
+                    <p>Ingresa la cantidad aproximada de botellas de PET de 600ml que consumes al mes:</p>
+                    <label for="inputBotellas">Botellas: </label>
+                    <input type="number" id="inputBotellas" min="0" value="20">
+                    <button onclick="calcularEcoladrillos()">Calcular Impacto</button>
+                    <div id="resultadoSimulador" class="resultado-js">Haz clic en el botón para ver el resultado técnico.</div>
+                </div>
+            </section>
+        </main>
 
-    <footer>
-        <p><b>Proyecto Web Escolar - Nivel Bachillerato</b></p>
-        <p>&copy; 2026. Desarrollado con HTML5, CSS y JavaScript para control de versiones en GitHub.</p>
-    </footer>
+        <footer>
+            <p><b>Proyecto Web Escolar - Nivel Bachillerato</b></p>
+            <p>&copy; 2026. Desarrollado con HTML5, CSS y JavaScript para control de versiones en GitHub.</p>
+        </footer>
+    </div>
 
+    <!-- ==========================================================================
+       CÓDIGO JAVASCRIPT
+       ========================================================================== -->
     <script>
-        // Función declarada para calcular el impacto ecológico
+        // FUNCIÓN NUEVA: Controla la transición de la pantalla de bienvenida al contenido
+        function ingresarAlSitio() {
+            var bienvenido = document.getElementById("welcome-screen");
+            var contenido = document.getElementById("main-content");
+
+            // 1. Activamos el contenido principal en segundo plano
+            contenido.style.display = "block";
+
+            // 2. Le añadimos la clase CSS que desvanece y achica la tarjeta de bienvenida
+            bienvenido.classList.add("hidden");
+
+            // 3. Después de que termine la animación (800ms), borramos la pantalla de bienvenida por completo
+            setTimeout(function() {
+                bienvenido.style.display = "none";
+            }, 800);
+        }
+
+        // Función del simulador de ecoladrillos (Mantiene la lógica anterior)
         function calcularEcoladrillos() {
-            // Obtenemos el valor numérico escrito por el usuario en el campo 'inputBotellas'
             var botellas = document.getElementById("inputBotellas").value;
-            
-            // Validación básica para evitar números negativos
             if (botellas < 0 || botellas === "") {
                 document.getElementById("resultadoSimulador").innerHTML = "Por favor ingresa un número válido de botellas.";
-                return; // Detiene la ejecución si el dato es incorrecto
+                return;
             }
-
-            // Datos técnicos estimados: Un ecoladrillo compacto de construcción requiere aprox. 30 botellas trituradas
             var botellasPorLadrillo = 30;
-            var ladrillosCreados = (botellas / botellasPorLadrillo).toFixed(1); // Deja 1 solo decimal
-            
-            // Estimación del CO2 evitado (aprox 0.05 kg por botella no quemada/tirada)
+            var ladrillosCreados = (botellas / botellasPorLadrillo).toFixed(1);
             var co2Evitado = (botellas * 0.05).toFixed(2);
 
-            // Inyectamos el texto dinámico y estructurado dentro de la división de resultados
             document.getElementById("resultadoSimulador").innerHTML = 
                 "Con " + botellas + " botellas puedes fabricar aprox. " + ladrillosCreados + " ecoladrillos para viviendas ecológicas en Veracruz y estás mitigando de forma indirecta " + co2Evitado + " kg de contaminación ambiental en tu región.";
         }
